@@ -251,7 +251,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "<AuthorForCreationDto xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.datacontract.org/2004/07/Library.API.Models\">\r\n        <DateOfBirth xmlns:d3p1=\"http://schemas.datacontract.org/2004/07/System\">\r\n            <d3p1:DateTime>1948-03-03T00:00:00Z</d3p1:DateTime>\r\n            <d3p1:OffsetMinutes>0</d3p1:OffsetMinutes>\r\n        </DateOfBirth>\r\n        <FirstName>James</FirstName>\r\n        <Genre>Thriller</Genre>\r\n        <LastName>Ellroy</LastName>\r\n</AuthorForCreationDto>"
+					"raw": "<AuthorCreateRequest xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.datacontract.org/2004/07/Meetup.DomainModel.DataContracts.Request\">\r\n        <DateOfBirth xmlns:d3p1=\"http://schemas.datacontract.org/2004/07/System\">\r\n            <d3p1:DateTime>1948-03-03T00:00:00Z</d3p1:DateTime>\r\n            <d3p1:OffsetMinutes>0</d3p1:OffsetMinutes>\r\n        </DateOfBirth>\r\n        <FirstName>James</FirstName>\r\n        <Genre>Thriller</Genre>\r\n        <LastName>Ellroy</LastName>\r\n</AuthorCreateRequest>"
 				},
 				"description": ""
 			},
