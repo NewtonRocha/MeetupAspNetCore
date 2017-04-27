@@ -1,0 +1,305 @@
+{
+	"variables": [],
+	"info": {
+		"name": "RESTful API ASP.NET Core Meetup-Cappta",
+		"_postman_id": "00780945-30db-4407-8565-336100eb8507",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST Author",
+			"request": {
+				"url": "http://localhost:6058/api/authors",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"firstName\" : \"James\",\n  \"lastName\" : \"Ellroy\",\n  \"dateOfBirth\" : \"1948-03-04T00:00:00\",\n  \"genre\": \"Thriller\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "POST Author (invalid body)",
+			"request": {
+				"url": "http://localhost:6058/api/authors",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"firstName\" : \"James\",\n  \"lastName\" : \"Ellroy\",\n  \"dateOfBirth\" : \"invalid value for DateTimeOffset\",\n  \"genre\": \"Thriller\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "POST Book for Author",
+			"request": {
+				"url": "http://localhost:6058/api/authors/f74d6899-9ed2-4137-9876-66b070553f8f/books",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\" : \"The Restaurant at the End of the Universe\",\n  \"description\" : \"The sequel to The Hitchhiker's Guide to the Galaxy\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "POST Book for Author (unexisting Author)",
+			"request": {
+				"url": "http://localhost:6058/api/authors/0d75ab75-0028-40c3-8019-1188fe7e790a/books",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\" : \"The Restaurant at the End of the Universe\",\n  \"description\" : \"The sequel to The Hitchhiker's Guide to the Galaxy\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "POST Author with Books",
+			"request": {
+				"url": "http://localhost:6058/api/authors",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"firstName\" : \"James\",\n  \"lastName\" : \"Ellroy\",\n  \"dateOfBirth\" : \"1948-03-04T00:00:00\",\n  \"genre\": \"Thriller\",\n  \"books\": [\n    {\n      \"title\" : \"American Tabloid\",\n        \"description\" : \"First book in the Underworld USA trilogy\"\n    },\n    {\n      \"title\": \"The Cold Six Thousand\",\n      \"description\": \"Second book in the Underworld USA trilogy\"\n    }\n    ]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "POST Author collection",
+			"request": {
+				"url": "http://localhost:6058/api/authorcollections",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[{\n  \"firstName\" : \"James\",\n  \"lastName\" : \"Ellroy\",\n  \"dateOfBirth\" : \"1948-03-04T00:00:00\",\n  \"genre\": \"Thriller\"\n},\n{\n  \"firstName\" : \"Jonathan\",\n  \"lastName\" : \"Franzen\",\n  \"dateOfBirth\" : \"1959-08-17T00:00:00\",\n  \"genre\": \"Drama\"\n}]"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "POST Author (single, unexisting - should fail with 404)",
+			"request": {
+				"url": "http://localhost:6058/api/authors/25141d83-4584-4487-a306-0441695d8e24",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"firstName\" : \"James\",\n  \"lastName\" : \"Ellroy\",\n  \"dateOfBirth\" : \"1948-03-04T00:00:00\",\n  \"genre\": \"Thriller\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "POST Author (single, existing - should fail with 409)",
+			"request": {
+				"url": "http://localhost:6058/api/authors/f74d6899-9ed2-4137-9876-66b070553f8f",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"firstName\" : \"James\",\n  \"lastName\" : \"Ellroy\",\n  \"dateOfBirth\" : \"1948-03-04T00:00:00\",\n  \"genre\": \"Thriller\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "POST Author (XML input)",
+			"request": {
+				"url": "http://localhost:6058/api/authors",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/xml",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<AuthorForCreationDto xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.datacontract.org/2004/07/Library.API.Models\">\r\n        <DateOfBirth xmlns:d3p1=\"http://schemas.datacontract.org/2004/07/System\">\r\n            <d3p1:DateTime>1948-03-03T00:00:00Z</d3p1:DateTime>\r\n            <d3p1:OffsetMinutes>0</d3p1:OffsetMinutes>\r\n        </DateOfBirth>\r\n        <FirstName>James</FirstName>\r\n        <Genre>Thriller</Genre>\r\n        <LastName>Ellroy</LastName>\r\n</AuthorForCreationDto>\r\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "POST Author (XML input, XML output)",
+			"request": {
+				"url": "http://localhost:6058/api/authors",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/xml",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/xml",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<AuthorForCreationDto xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.datacontract.org/2004/07/Library.API.Models\">\r\n        <DateOfBirth xmlns:d3p1=\"http://schemas.datacontract.org/2004/07/System\">\r\n            <d3p1:DateTime>1948-03-03T00:00:00Z</d3p1:DateTime>\r\n            <d3p1:OffsetMinutes>0</d3p1:OffsetMinutes>\r\n        </DateOfBirth>\r\n        <FirstName>James</FirstName>\r\n        <Genre>Thriller</Genre>\r\n        <LastName>Ellroy</LastName>\r\n</AuthorForCreationDto>"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Book for Author",
+			"request": {
+				"url": "http://localhost:6058/api/authors/25320c5e-f58a-4b1f-b63a-8ee07a840bdf/books/70a1f9b9-0a37-4c1a-99b1-c7709fc64167",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Book for Author (unexisting Book)",
+			"request": {
+				"url": "http://localhost:6058/api/authors/25320c5e-f58a-4b1f-b63a-8ee07a840bdf/books/3f946dbe-edf3-4c44-baef-b683bc355a0f",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Book for Author (unexisting Author)",
+			"request": {
+				"url": "http://localhost:6058/api/authors/787f6625-6048-43d7-b64e-bf3d02f0132d/books/70a1f9b9-0a37-4c1a-99b1-c7709fc64167",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Author",
+			"request": {
+				"url": "http://localhost:6058/api/authors/25320c5e-f58a-4b1f-b63a-8ee07a840bdf",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
